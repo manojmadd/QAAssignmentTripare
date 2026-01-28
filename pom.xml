@@ -1,47 +1,72 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
- <modelVersion>4.0.0</modelVersion>
-  <groupId>ManojAutomationHandsOn</groupId>
-  <artifactId>ManojAutomationHandsOn</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+    <modelVersion>4.0.0</modelVersion>
 
+    <groupId>TripareQAAssignment</groupId>
+    <artifactId>TripareQAAssignment</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
-<dependencies>
-<dependency>
-    <groupId>org.seleniumhq.selenium</groupId>
-    <artifactId>selenium-java</artifactId>
-    <version>LATEST</version>
-    <scope>compile</scope>
-</dependency>
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-<!-- Source: https://mvnrepository.com/artifact/org.testng/testng -->
-<dependency>
-    <groupId>org.testng</groupId>
-    <artifactId>testng</artifactId>
-    <version>7.9.0</version>
-    <scope>test</scope>
-</dependency>
+    <dependencies>
 
-<!-- SLF4J API -->
-<dependency>
-    <groupId>org.slf4j</groupId>
-    <artifactId>slf4j-api</artifactId>
-    <version>2.0.9</version>
-</dependency>
+        <!-- Selenium -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.18.1</version>
+        </dependency>
 
-<!-- SLF4J binding for Log4j2 -->
-<dependency>
-    <groupId>org.apache.logging.log4j</groupId>
-    <artifactId>log4j-slf4j2-impl</artifactId>
-    <version>2.22.1</version>
-</dependency>
+        <!-- TestNG (NO scope=test so it works in src/main/java) -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.9.0</version>
+        </dependency>
 
-</dependencies>
+        <!-- WebDriverManager (optional but useful) -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.7.0</version>
+        </dependency>
 
+    </dependencies>
 
+    <build>
+        <plugins>
+
+            <!-- Compiler -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <!-- TestNG Runner -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
 
 </project>

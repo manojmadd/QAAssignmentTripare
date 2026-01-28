@@ -5,7 +5,7 @@
     <classes>
       <class name="Tests.ConditionalLoginTest"/>
       <class name="Tests.ModalFlowTest"/>
-      <class name="Tests.verifyLazyList"/>
+      <class name="Tests.VerifyLazyList"/>
       <class name="Tests.DynamicIdTest"/>
       <class name="Tests.DelayedButtonTest"/>
     </classes>
