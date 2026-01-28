@@ -1,8 +1,11 @@
 package Tests;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,7 +13,7 @@ import Base.BaseTest;
 
 public class DelayedButtonTest extends BaseTest {
 
-    @Test
+    @Test(invocationCount = 10)
     public void delayedButtonFlow() {
     	openTimingChallengesTab();
         WebElement startProcessBtn = wait.until(
@@ -28,10 +31,21 @@ public class DelayedButtonTest extends BaseTest {
 
         confirmBtn.click();
 
-        Assert.assertTrue(
-            driver.getPageSource().contains("Action Completed Successfully!"),
-            "Success message not visible"
+        WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        WebElement successMessage = shortWait.until(
+                ExpectedConditions.visibilityOfElementLocated(
+                        By.xpath("//*[@data-testid='success-message']")
+                )
         );
+
+        String messageText = successMessage.getText().trim();
+
+        Assert.assertTrue(
+                messageText.contains("Confirmed Successfully"),
+                "Success message text is incorrect!"
+        );
+
     }
 }
 

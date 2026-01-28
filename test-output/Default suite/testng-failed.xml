@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Tests.ModalFlowTest">
+      <class name="Tests.DelayedButtonTest">
         <methods>
-          <include name="modalConfirmationFlow"/>
+          <include name="delayedButtonFlow"/>
           <include name="tearDown"/>
           <include name="setup"/>
         </methods>
-      </class> <!-- Tests.ModalFlowTest -->
+      </class> <!-- Tests.DelayedButtonTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
